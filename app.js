@@ -31,7 +31,7 @@ const data = {
 };
 
 const config = {
-  type: "bar",
+  type: "line",
   data: data,
   option: {
     animation: {
@@ -117,6 +117,3 @@ function changeToPie() {
   }
   myChart.update();
 }
-
-
-
