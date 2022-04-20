@@ -3,6 +3,7 @@ const btn1 = document.querySelector(".line");
 const btn2 = document.querySelector(".bar");
 const btn3 = document.querySelector(".pie");
 
+let delayed;
 const label = [
   "Jan",
   "Feb",
@@ -22,8 +23,8 @@ const data = {
     {
       data: [20, 10, 1, 25, 18, 19, 9],
       label: "Sales",
-      backgroundColor: ["#AF2312"],
-      borderColor: [],
+      backgroundColor: [randomColor()],
+      borderColor: [randomColor()],
     },
   ],
   labels: label,
@@ -32,6 +33,20 @@ const data = {
 const config = {
   type: "bar",
   data: data,
+  option: {
+    animation: {
+      onComplete: () => {
+        delayed = true;
+      },
+      delay: (context) => {
+        let delay = 0;
+        if (context.type === "data" && context.mode === "default" && !delayed) {
+          delay = context.dataIndex * 300 + context.datasetIndex * 100;
+        }
+        return delay;
+      },
+    },
+  },
 };
 const myChart = new Chart(ctx, config);
 
@@ -102,3 +117,6 @@ function changeToPie() {
   }
   myChart.update();
 }
+
+
+
