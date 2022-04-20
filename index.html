@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <title>Chart JS</title>
+    <style>
+      body {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+      }
+      .my_div {
+        text-align: center;
+      }
+      .custom_btn {
+        padding: 8px 16px;
+        border: none;
+        background-color: rgb(176, 184, 103);
+        color: black;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="my_div">
+      <canvas id="myChart" width="300" height="300"></canvas>
+      <button class="custom_btn line">Line</button>
+      <button class="custom_btn bar">Bar</button>
+      <button class="custom_btn pie">Pie</button>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
