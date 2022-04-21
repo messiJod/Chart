@@ -30,15 +30,27 @@
         background-color: white;
         border: 1px solid rgb(126, 184, 103);
       }
+      #hsl {
+        font-size: 2em;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 2px;
+        color: black;
+        cursor: pointer;
+        transition: 0.3s all;
+      }
     </style>
   </head>
   <body>
     <div class="my_div">
       <canvas id="myChart" width="300" height="300"></canvas>
+      <button class="custom_btn data">Generate Data</button>
       <button class="custom_btn line">Line</button>
       <button class="custom_btn bar">Bar</button>
       <button class="custom_btn pie">Pie</button>
     </div>
+
+    <button id="hsl">Test</button>
     <script src="app.js"></script>
   </body>
 </html>

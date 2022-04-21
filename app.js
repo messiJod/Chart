@@ -2,6 +2,8 @@ const ctx = document.getElementById("myChart");
 const btn1 = document.querySelector(".line");
 const btn2 = document.querySelector(".bar");
 const btn3 = document.querySelector(".pie");
+const databtn = document.querySelector(".data");
+let hslbtn = document.querySelector("#hsl");
 
 let delayed;
 const label = [
@@ -21,10 +23,12 @@ const label = [
 const data = {
   datasets: [
     {
-      data: [20, 10, 1, 25, 18, 19, 9],
+      data: [100,55,10,48,79,69],
       label: "Sales",
       backgroundColor: [randomColor()],
       borderColor: [randomColor()],
+      tension: 0.3,
+      fill: true,
     },
   ],
   labels: label,
@@ -44,6 +48,15 @@ const config = {
           delay = context.dataIndex * 300 + context.datasetIndex * 100;
         }
         return delay;
+      },
+    },
+    scales: {
+      y: {
+        ticks: {
+          callback: function (value) {
+            return "$" + value;
+          },
+        },
       },
     },
   },
@@ -88,11 +101,11 @@ function randomColor() {
 function changeToLine() {
   config.type = "line";
   let number = label.length;
-  for (let i = 0; i < number; i++) {
+  for (let i = 0; i < 1; i++) {
     data.datasets[0].backgroundColor.push(randomColor());
     //    data.datasets[0].borderColor.push(randomColor());
   }
-  data.datasets[0].borderColor = "pink";
+  data.datasets[0].borderColor = randomColor();
   myChart.update();
 }
 
@@ -100,10 +113,10 @@ function changeToBar() {
   config.type = "bar";
   let number = label.length;
   for (let i = 0; i < number; i++) {
-    data.datasets[0].backgroundColor.push(randomColor());
+    data.datasets[0].backgroundColor.push(color());
     //    data.datasets[0].borderColor.push(randomColor());
   }
-  data.datasets[0].borderColor = "pink";
+  data.datasets[0].borderColor = randomColor();
   myChart.update();
 }
 
@@ -117,3 +130,30 @@ function changeToPie() {
   }
   myChart.update();
 }
+
+function random(min, max) {
+  let number = Math.floor(Math.random() * (max - min + 1)) + min;
+  return number;
+}
+
+function color() {
+  let colorString = `hsl(${random(1, 360)},${random(1, 100)}% ,${random(
+    1,
+    100
+  )}%)`;
+  return colorString;
+}
+
+function dataPush() {
+  data.datasets[0].data = [];
+  for (let i = 0; i < label.length; i++) {
+    data.datasets[0].data.push(random(1, 100));
+  }
+  myChart.update();
+}
+
+databtn.addEventListener("mouseover", dataPush);
+
+hslbtn.addEventListener("mouseover", function () {
+  hslbtn.style.backgroundColor = color();
+});
