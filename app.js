@@ -23,10 +23,10 @@ const label = [
 const data = {
   datasets: [
     {
-      data: [100,55,10,48,79,69],
+      data: [100, 55, 10, 48, 79, 69],
       label: "Sales",
       backgroundColor: [randomColor()],
-      borderColor: [randomColor()],
+      borderColor: ["#fff"],
       tension: 0.3,
       fill: true,
     },
@@ -126,7 +126,7 @@ function changeToPie() {
   let number = label.length;
   for (let i = 0; i < number; i++) {
     data.datasets[0].backgroundColor.push(randomColor());
-    //    data.datasets[0].borderColor.push(randomColor());
+    data.datasets[0].borderColor = "#fff";
   }
   myChart.update();
 }
