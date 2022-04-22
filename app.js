@@ -1,11 +1,26 @@
-const ctx = document.getElementById("myChart");
+const ctx = document.getElementById("myChart").getContext("2d");
 const btn1 = document.querySelector(".line");
 const btn2 = document.querySelector(".bar");
 const btn3 = document.querySelector(".pie");
+const btn4 = document.querySelector(".doughnut");
 const databtn = document.querySelector(".data");
 let hslbtn = document.querySelector("#hsl");
 
 let delayed;
+const colorPalette = [
+  "#374151",
+  "#1d4ed8",
+  "#ef4444",
+  "#f97316",
+  "#06b6d4",
+  "#8b5cf6",
+  "#3b82f6",
+  "#22c55e",
+  "#a8a29e",
+  "#4338ca",
+  "#be185d",
+];
+
 const label = [
   "Jan",
   "Feb",
@@ -23,12 +38,12 @@ const label = [
 const data = {
   datasets: [
     {
-      data: [100, 55, 10, 48, 79, 69],
+      data: [],
       label: "Sales",
-      backgroundColor: [randomColor()],
-      borderColor: ["#fff"],
+      backgroundColor: colorPalette,
+      borderColor: [randomColor()],
       tension: 0.3,
-      fill: true,
+      fill: false,
     },
   ],
   labels: label,
@@ -37,7 +52,8 @@ const data = {
 const config = {
   type: "line",
   data: data,
-  option: {
+  options: {
+    responsive: true,
     animation: {
       onComplete: () => {
         delayed = true;
@@ -51,7 +67,15 @@ const config = {
       },
     },
     scales: {
+      x: {
+        grid: {
+          display: true,
+        },
+      },
       y: {
+        grid: {
+          display: true,
+        },
         ticks: {
           callback: function (value) {
             return "$" + value;
@@ -66,6 +90,7 @@ const myChart = new Chart(ctx, config);
 btn1.addEventListener("click", changeToLine);
 btn2.addEventListener("click", changeToBar);
 btn3.addEventListener("click", changeToPie);
+btn4.addEventListener("click", changeToDoughnut);
 
 function randomColor() {
   let string = [
@@ -103,9 +128,11 @@ function changeToLine() {
   let number = label.length;
   for (let i = 0; i < 1; i++) {
     data.datasets[0].backgroundColor.push(randomColor());
-    //    data.datasets[0].borderColor.push(randomColor());
+    // data.datasets[0].borderColor.push(randomColor());
   }
   data.datasets[0].borderColor = randomColor();
+  config.options.scales.x.grid.display = true;
+  config.options.scales.y.grid.display = true;
   myChart.update();
 }
 
@@ -117,6 +144,8 @@ function changeToBar() {
     //    data.datasets[0].borderColor.push(randomColor());
   }
   data.datasets[0].borderColor = randomColor();
+  config.options.scales.x.grid.display = true;
+  config.options.scales.y.grid.display = true;
   myChart.update();
 }
 
@@ -128,6 +157,22 @@ function changeToPie() {
     data.datasets[0].backgroundColor.push(randomColor());
     data.datasets[0].borderColor = "#fff";
   }
+  // config.options.radius = "100";
+  config.options.scales.x.grid.display = false;
+  config.options.scales.y.grid.display = false;
+  myChart.update();
+}
+
+function changeToDoughnut() {
+  config.type = "doughnut";
+  let number = label.length;
+  for (let i = 0; i < number; i++) {
+    data.datasets[0].backgroundColor.push(randomColor());
+  }
+  data.datasets[0].borderColor = "#fff";
+  config.options.scales.x.grid.display = false;
+  config.options.scales.y.grid.display = false;
+  // config.options.legend.display = false;
   myChart.update();
 }
 
@@ -154,6 +199,6 @@ function dataPush() {
 
 databtn.addEventListener("mouseover", dataPush);
 
-hslbtn.addEventListener("mouseover", function () {
-  hslbtn.style.backgroundColor = color();
-});
+// hslbtn.addEventListener("mouseover", function () {
+//   hslbtn.style.backgroundColor = color();
+// });

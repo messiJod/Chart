@@ -1,0 +1,35 @@
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.my_div {
+  text-align: center;
+}
+#myChart {
+  margin-bottom: 2em;
+}
+.custom_btn {
+  font-size: 2em;
+  padding: 8px 16px;
+  border: 1px solid rgb(126, 184, 103);
+  border-radius: 2px;
+  background-color: rgb(126, 184, 103);
+  color: black;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+.custom_btn:hover {
+  color: rgb(126, 184, 103);
+  background-color: white;
+  border: 1px solid rgb(126, 184, 103);
+}
+#hsl {
+  font-size: 2em;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 2px;
+  color: black;
+  cursor: pointer;
+  transition: 0.3s all;
+}

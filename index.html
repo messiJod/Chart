@@ -4,42 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <title>Chart JS</title>
-    <style>
-      body {
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-      }
-      .my_div {
-        text-align: center;
-      }
-      .custom_btn {
-        font-size: 2em;
-        padding: 8px 16px;
-        border: 1px solid rgb(126, 184, 103);
-        border-radius: 2px;
-        background-color: rgb(126, 184, 103);
-        color: black;
-        cursor: pointer;
-        transition: 0.3s all;
-      }
-      .custom_btn:hover {
-        color: rgb(126, 184, 103);
-        background-color: white;
-        border: 1px solid rgb(126, 184, 103);
-      }
-      #hsl {
-        font-size: 2em;
-        padding: 8px 16px;
-        border: none;
-        border-radius: 2px;
-        color: black;
-        cursor: pointer;
-        transition: 0.3s all;
-      }
-    </style>
   </head>
   <body>
     <div class="my_div">
@@ -48,9 +15,10 @@
       <button class="custom_btn line">Line</button>
       <button class="custom_btn bar">Bar</button>
       <button class="custom_btn pie">Pie</button>
+      <button class="custom_btn doughnut">Doughnut</button>
     </div>
 
-    <button id="hsl">Test</button>
+    <!-- <button id="hsl">Test</button> -->
     <script src="app.js"></script>
   </body>
 </html>
