@@ -4,9 +4,10 @@ const btn2 = document.querySelector(".bar");
 const btn3 = document.querySelector(".pie");
 const btn4 = document.querySelector(".doughnut");
 const databtn = document.querySelector(".data");
-let hslbtn = document.querySelector("#hsl");
+const hslbtn = document.querySelector("#hsl");
 
 let delayed;
+
 const colorPalette = [
   "#374151",
   "#1d4ed8",
@@ -21,7 +22,7 @@ const colorPalette = [
   "#be185d",
 ];
 
-const label = [
+const monthLabel = [
   "Jan",
   "Feb",
   "Mar",
@@ -38,7 +39,7 @@ const label = [
 const data = {
   datasets: [
     {
-      data: [],
+      data: [55, 94, 84, 10, 262, 1, 295, 48, 75],
       label: "Sales",
       backgroundColor: colorPalette,
       borderColor: [randomColor()],
@@ -46,13 +47,20 @@ const data = {
       fill: false,
     },
   ],
-  labels: label,
+  labels: monthLabel,
 };
 
 const config = {
   type: "line",
   data: data,
   options: {
+    plugins: {
+      title: {
+        display: true,
+        text: "HAkur",
+        fontsize: 24,
+      },
+    },
     responsive: true,
     animation: {
       onComplete: () => {
@@ -129,40 +137,46 @@ function randomColor() {
 
 function changeToLine() {
   config.type = "line";
-  let number = label.length;
+  let number = monthLabel.length;
   for (let i = 0; i < 1; i++) {
-    data.datasets[0].backgroundColor.push(randomColor());
+    data.datasets[0].backgroundColor.push(color());
     // data.datasets[0].borderColor.push(randomColor());
   }
-  data.datasets[0].borderColor = randomColor();
+  data.datasets[0].borderColor = color();
   config.options.scales.x.grid.display = true;
   config.options.scales.y.grid.display = true;
   config.options.scales.x.ticks.display = true;
   config.options.scales.y.ticks.display = true;
+  config.data.datasets[0].radius = 5;
+  config.data.datasets[0].hitRadius = 40;
+  config.data.datasets[0].hoverRadius = 12;
   myChart.update();
 }
 
 function changeToBar() {
   config.type = "bar";
-  let number = label.length;
+  let number = monthLabel.length;
   for (let i = 0; i < number; i++) {
     data.datasets[0].backgroundColor.push(color());
-    //    data.datasets[0].borderColor.push(randomColor());
+    // data.datasets[0].borderColor.push(randomColor());
   }
-  data.datasets[0].borderColor = randomColor();
-  config.options.scales.x.grid.display = true;
+  data.datasets[0].borderColor = color();
+  config.options.scales.x.grid.display = false;
   config.options.scales.y.grid.display = true;
   config.options.scales.x.ticks.display = true;
   config.options.scales.y.ticks.display = true;
+  delete config.data.datasets[0].radius;
+  delete config.data.datasets[0].hitRadius;
+  delete config.data.datasets[0].hoverRadius;
   myChart.update();
 }
 
 function changeToPie() {
   config.type = "pie";
   //    let number = data.datasets[0].data.length;
-  let number = label.length;
+  let number = monthLabel.length;
   for (let i = 0; i < number; i++) {
-    data.datasets[0].backgroundColor.push(randomColor());
+    data.datasets[0].backgroundColor.push(color());
     data.datasets[0].borderColor = "#fff";
   }
   // config.options.radius = "100";
@@ -170,12 +184,15 @@ function changeToPie() {
   config.options.scales.y.grid.display = false;
   config.options.scales.x.ticks.display = false;
   config.options.scales.y.ticks.display = false;
+  delete config.data.datasets[0].radius;
+  delete config.data.datasets[0].hitRadius;
+  delete config.data.datasets[0].hoverRadius;
   myChart.update();
 }
 
 function changeToDoughnut() {
   config.type = "doughnut";
-  let number = label.length;
+  let number = monthLabel.length;
   for (let i = 0; i < number; i++) {
     data.datasets[0].backgroundColor.push(randomColor());
   }
@@ -184,6 +201,9 @@ function changeToDoughnut() {
   config.options.scales.y.grid.display = false;
   config.options.scales.x.ticks.display = false;
   config.options.scales.y.ticks.display = false;
+  delete config.data.datasets[0].radius;
+  delete config.data.datasets[0].hitRadius;
+  delete config.data.datasets[0].hoverRadius;
   myChart.update();
 }
 
@@ -202,8 +222,8 @@ function color() {
 
 function dataPush() {
   data.datasets[0].data = [];
-  for (let i = 0; i < label.length; i++) {
-    data.datasets[0].data.push(random(1, 100));
+  for (let i = 0; i < monthLabel.length; i++) {
+    data.datasets[0].data.push(random(1, 1000));
   }
   myChart.update();
 }
