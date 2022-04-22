@@ -71,6 +71,9 @@ const config = {
         grid: {
           display: true,
         },
+        ticks: {
+          display: true,
+        },
       },
       y: {
         grid: {
@@ -80,6 +83,7 @@ const config = {
           callback: function (value) {
             return "$" + value;
           },
+          display: true,
         },
       },
     },
@@ -133,6 +137,8 @@ function changeToLine() {
   data.datasets[0].borderColor = randomColor();
   config.options.scales.x.grid.display = true;
   config.options.scales.y.grid.display = true;
+  config.options.scales.x.ticks.display = true;
+  config.options.scales.y.ticks.display = true;
   myChart.update();
 }
 
@@ -146,6 +152,8 @@ function changeToBar() {
   data.datasets[0].borderColor = randomColor();
   config.options.scales.x.grid.display = true;
   config.options.scales.y.grid.display = true;
+  config.options.scales.x.ticks.display = true;
+  config.options.scales.y.ticks.display = true;
   myChart.update();
 }
 
@@ -160,6 +168,8 @@ function changeToPie() {
   // config.options.radius = "100";
   config.options.scales.x.grid.display = false;
   config.options.scales.y.grid.display = false;
+  config.options.scales.x.ticks.display = false;
+  config.options.scales.y.ticks.display = false;
   myChart.update();
 }
 
@@ -172,7 +182,8 @@ function changeToDoughnut() {
   data.datasets[0].borderColor = "#fff";
   config.options.scales.x.grid.display = false;
   config.options.scales.y.grid.display = false;
-  // config.options.legend.display = false;
+  config.options.scales.x.ticks.display = false;
+  config.options.scales.y.ticks.display = false;
   myChart.update();
 }
 
