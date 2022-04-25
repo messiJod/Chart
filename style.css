@@ -6,15 +6,20 @@ body {
   place-items: center;
 }
 .my_div {
+  /* border: 1px solid red; */
   text-align: center;
+  width: 35em;
+  height: 25em;
+  /* aspect-ratio: 1; */
 }
 
-h1 {
-  font-size: 2em;
-  font-family: inter
-}
 #myChart {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
+}
+
+.btn_container {
+  display: flex;
+  gap: 0.5em;
 }
 .custom_btn {
   font-size: 2em;

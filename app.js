@@ -91,6 +91,7 @@ const config = {
     },
     scales: {
       x: {
+        offset: false,
         grid: {
           display: true,
         },
@@ -99,6 +100,7 @@ const config = {
         },
       },
       y: {
+        beginAtZero: true,
         grid: {
           display: true,
         },
@@ -161,7 +163,7 @@ function changeToLine() {
     data.datasets[0].backgroundColor.push(color());
     // data.datasets[0].borderColor.push(randomColor());
   }
-  data.datasets[0].borderColor = color();
+  data.datasets[0].borderColor = randomColor();
   config.options.scales.x.grid.display = true;
   config.options.scales.y.grid.display = true;
   config.options.scales.x.ticks.display = true;
@@ -172,6 +174,7 @@ function changeToLine() {
   config.data.datasets[0].pointBackgroundColor = "rgba(199,33,104,1)";
   config.options.scales.x.grid.borderColor = "#D9D9D9";
   config.options.scales.y.grid.borderColor = "#D9D9D9";
+  config.options.scales.x.offset = false;
   myChart.update();
 }
 
@@ -192,6 +195,7 @@ function changeToBar() {
   delete config.data.datasets[0].hoverRadius;
   config.options.scales.x.grid.borderColor = "#D9D9D9";
   config.options.scales.y.grid.borderColor = "#D9D9D9";
+  config.options.scales.x.offset = true;
   myChart.update();
 }
 
@@ -213,6 +217,7 @@ function changeToPie() {
   delete config.data.datasets[0].hoverRadius;
   config.options.scales.x.grid.borderColor = "transparent";
   config.options.scales.y.grid.borderColor = "transparent";
+  config.options.scales.x.offset = false;
   myChart.update();
 }
 
@@ -232,6 +237,7 @@ function changeToDoughnut() {
   delete config.data.datasets[0].hoverRadius;
   config.options.scales.x.grid.borderColor = "transparent";
   config.options.scales.y.grid.borderColor = "transparent";
+  config.options.scales.x.offset = false;
   myChart.update();
 }
 
