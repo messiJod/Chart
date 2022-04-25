@@ -5,6 +5,9 @@ const btn3 = document.querySelector(".pie");
 const btn4 = document.querySelector(".doughnut");
 const databtn = document.querySelector(".data");
 const hslbtn = document.querySelector("#hsl");
+const monthbtn = document.querySelector(".month");
+const weekbtn = document.querySelector(".week");
+const daybtn = document.querySelector(".day");
 
 let delayed;
 
@@ -20,6 +23,18 @@ const colorPalette = [
   "#a8a29e",
   "#4338ca",
   "#be185d",
+];
+const dayLabel = [];
+
+const weekLabel = [
+  "Week1",
+  "Week2",
+  "Week3",
+  "Week4",
+  "Week5",
+  "Week6",
+  "Week7",
+  "Week8",
 ];
 
 const monthLabel = [
@@ -99,10 +114,14 @@ const config = {
 };
 const myChart = new Chart(ctx, config);
 
+window.addEventListener("load", days);
 btn1.addEventListener("click", changeToLine);
 btn2.addEventListener("click", changeToBar);
 btn3.addEventListener("click", changeToPie);
 btn4.addEventListener("click", changeToDoughnut);
+monthbtn.addEventListener("click", changeLabelToMonth);
+weekbtn.addEventListener("click", changeLabelToWeek);
+daybtn.addEventListener("click", changeLabelToDay);
 
 function randomColor() {
   let string = [
@@ -151,6 +170,8 @@ function changeToLine() {
   config.data.datasets[0].hitRadius = 40;
   config.data.datasets[0].hoverRadius = 12;
   config.data.datasets[0].pointBackgroundColor = "rgba(199,33,104,1)";
+  config.options.scales.x.grid.borderColor = "#D9D9D9";
+  config.options.scales.y.grid.borderColor = "#D9D9D9";
   myChart.update();
 }
 
@@ -169,6 +190,8 @@ function changeToBar() {
   delete config.data.datasets[0].radius;
   delete config.data.datasets[0].hitRadius;
   delete config.data.datasets[0].hoverRadius;
+  config.options.scales.x.grid.borderColor = "#D9D9D9";
+  config.options.scales.y.grid.borderColor = "#D9D9D9";
   myChart.update();
 }
 
@@ -188,6 +211,8 @@ function changeToPie() {
   delete config.data.datasets[0].radius;
   delete config.data.datasets[0].hitRadius;
   delete config.data.datasets[0].hoverRadius;
+  config.options.scales.x.grid.borderColor = "transparent";
+  config.options.scales.y.grid.borderColor = "transparent";
   myChart.update();
 }
 
@@ -205,6 +230,23 @@ function changeToDoughnut() {
   delete config.data.datasets[0].radius;
   delete config.data.datasets[0].hitRadius;
   delete config.data.datasets[0].hoverRadius;
+  config.options.scales.x.grid.borderColor = "transparent";
+  config.options.scales.y.grid.borderColor = "transparent";
+  myChart.update();
+}
+
+function changeLabelToMonth() {
+  data.labels = monthLabel;
+  myChart.update();
+}
+
+function changeLabelToWeek() {
+  data.labels = weekLabel;
+  myChart.update();
+}
+
+function changeLabelToDay() {
+  data.labels = dayLabel;
   myChart.update();
 }
 
@@ -227,6 +269,12 @@ function dataPush() {
     data.datasets[0].data.push(random(1, 1000));
   }
   myChart.update();
+}
+
+function days() {
+  for (let i = 1; i <= 60; i++) {
+    dayLabel.push(i);
+  }
 }
 
 databtn.addEventListener("mouseover", dataPush);

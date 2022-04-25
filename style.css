@@ -1,10 +1,17 @@
 body {
+  margin: 0;
+  padding: 0;
   min-height: 100vh;
   display: grid;
   place-items: center;
 }
 .my_div {
   text-align: center;
+}
+
+h1 {
+  font-size: 2em;
+  font-family: inter
 }
 #myChart {
   margin-bottom: 2em;
