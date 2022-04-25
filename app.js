@@ -56,8 +56,8 @@ const config = {
   options: {
     plugins: {
       title: {
-        display: true,
-        text: "HAkur",
+        display: false,
+        text: "TOP",
         fontsize: 24,
       },
     },
@@ -150,6 +150,7 @@ function changeToLine() {
   config.data.datasets[0].radius = 5;
   config.data.datasets[0].hitRadius = 40;
   config.data.datasets[0].hoverRadius = 12;
+  config.data.datasets[0].pointBackgroundColor = "rgba(199,33,104,1)";
   myChart.update();
 }
 
