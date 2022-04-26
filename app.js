@@ -69,13 +69,6 @@ const config = {
   type: "line",
   data: data,
   options: {
-    plugins: {
-      title: {
-        display: false,
-        text: "TOP",
-        fontsize: 24,
-      },
-    },
     responsive: true,
     animation: {
       onComplete: () => {
