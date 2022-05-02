@@ -69,6 +69,9 @@ const config = {
   type: "line",
   data: data,
   options: {
+    legend: {
+      display: true, //This will do the task
+    },
     responsive: true,
     animation: {
       onComplete: () => {
@@ -168,6 +171,7 @@ function changeToLine() {
   config.options.scales.x.grid.borderColor = "#D9D9D9";
   config.options.scales.y.grid.borderColor = "#D9D9D9";
   config.options.scales.x.offset = false;
+  config.options.legend.display = true;
   myChart.update();
 }
 
@@ -189,6 +193,7 @@ function changeToBar() {
   config.options.scales.x.grid.borderColor = "#D9D9D9";
   config.options.scales.y.grid.borderColor = "#D9D9D9";
   config.options.scales.x.offset = true;
+  config.options.legend.display = true;
   myChart.update();
 }
 
@@ -211,6 +216,8 @@ function changeToPie() {
   config.options.scales.x.grid.borderColor = "transparent";
   config.options.scales.y.grid.borderColor = "transparent";
   config.options.scales.x.offset = false;
+  config.options.hoverOffset = 10;
+  config.options.legend.display = false;
   myChart.update();
 }
 
@@ -231,6 +238,8 @@ function changeToDoughnut() {
   config.options.scales.x.grid.borderColor = "transparent";
   config.options.scales.y.grid.borderColor = "transparent";
   config.options.scales.x.offset = false;
+  config.options.hoverOffset = 10;
+  config.options.legend.display = false;
   myChart.update();
 }
 
@@ -281,3 +290,5 @@ databtn.addEventListener("mouseover", dataPush);
 // hslbtn.addEventListener("mouseover", function () {
 //   hslbtn.style.backgroundColor = color();
 // });
+
+function checkChart() {}
